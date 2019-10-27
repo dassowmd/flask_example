@@ -59,6 +59,9 @@ class mongo_obj:
         # Delete Documents
         return self.courses.delete_many(query_params)
 
+    def delete_one(self, query_params):
+        return self.courses.delete_one(query_params)
+
 if __name__=='__main__':
     db_obj = mongo_obj()
 

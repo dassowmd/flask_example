@@ -25,5 +25,10 @@ def update_course(id):
     body = request.get_json()
     return dumps(mongo_obj.update_course(id=ObjectId(id), course=body))
 
+@app.route('/api/courses/<id>', methods=['DELETE'])
+def delete_course(id):
+    res = mongo_obj.delete_one({"_id":ObjectId(id)})
+    return dumps({'delete_count': res.deleted_count})
+
 if __name__ == '__main__':
     app.run()
